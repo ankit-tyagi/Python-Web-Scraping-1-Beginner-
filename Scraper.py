@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import smtplib
+import time
 
 
 url = 'https://www.amazon.in/Reebok-Mens-Rush-Running-Shoes/dp/B07FKFXNTH?pf_rd_p=694b9d36-2eb6-4ee4-8d67-51e8321505be&pd_rd_wg=AUmDX&pf_rd_r=FZ74W7SSSB5158P31JW8&ref_=pd_gw_unk&pd_rd_w=Qy7kc&pd_rd_r=0a466d21-02e2-43da-bf61-40f3ce4f16c3&th=1&psc=1'
@@ -32,8 +33,8 @@ def sendmail():
     server.starttls()
     server.ehlo()
 
-    server.login('ankit7tyagi@gmail.com', 'hzujvufrqklprfem')
-
+    server.login('ankit7tyagi@gmail.com','Enter your password here before the bracket is closed') 
+    #'Enter your password here before the bracket is closed')
     subject = 'Price fell down'
     body = 'Check the amazon link https://www.amazon.in/Reebok-Mens-Rush-Running-Shoes/dp/B07FKFXNTH?pf_rd_p=694b9d36-2eb6-4ee4-8d67-51e8321505be&pd_rd_wg=AUmDX&pf_rd_r=FZ74W7SSSB5158P31JW8&ref_=pd_gw_unk&pd_rd_w=Qy7kc&pd_rd_r=0a466d21-02e2-43da-bf61-40f3ce4f16c3&th=1&psc=1'
 
@@ -47,5 +48,9 @@ def sendmail():
     print('Email has been sent  ')
     server.quit()
 
-
-checkprice()
+num = 2
+while(True and num>0):
+    checkprice()
+    time.sleep(5)
+    num = num-1
+    print(time.strftime("%H:%M:%S", time.gmtime())) # time.localtime))
